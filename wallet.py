@@ -94,7 +94,7 @@ class Wallet:
         """Проверяет зарегистрирован ли пользователь в wallet"""
         params = {"check_id": user_id}
 
-        return await self.method(HttpMethod.GET, "checks_user_exists", params=params)["exists"]
+        return (await self.method(HttpMethod.GET, "checks_user_exists", params=params))["exists"]
 
 
     async def send_coins(
