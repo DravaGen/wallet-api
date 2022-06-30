@@ -4,7 +4,7 @@ import hashlib
 from typing import Any
 from datetime import datetime
 
-from schemes import HttpMethod, UserBalance, PaymentUrl, \
+from .schemes import HttpMethod, UserBalance, PaymentUrl, \
     TranslationType, Translation, SendCoins, \
     SetCallback, DeleteCallback
 
@@ -80,6 +80,14 @@ class Wallet:
             transactions.append(Translation(**transaction))
 
         return transactions
+
+
+    async def get_last_transaction_id(self) -> int:
+        """Получение идентификатора последней транзакции"""
+
+        transactions = await self.get_transactions()
+
+        return transactions[0].id if len(transactions) > 0 else 0
 
 
     async def checks_user_exists(self, user_id: int) -> bool:

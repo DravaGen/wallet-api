@@ -1,5 +1,4 @@
-from wallet import *
-from schemes import *
+# -*- coding: utf8 -*-
 
-__author__ = 'DravaGen'
-__version__ = '1.0.0'
+from .wallet import *
+from .schemes import *
